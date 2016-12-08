@@ -168,8 +168,10 @@ void loop()
 
 			Rx_Pack_Received = 0;
 			LostSignal = false; // Reset LostSignal to false (has signal)
+			if (LinkInit == false)
+			{
 			LinkInit = true;
-
+			}
 			red_led(false);
 		}
 
