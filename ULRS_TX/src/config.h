@@ -113,6 +113,7 @@ unsigned char Tx_RSSI = 110;
 #define RF_OUT_INDICATOR A0
 #define BUZZER 10
 #define BTN 11
+#define PWR_BTN 9  // Toggle switch for RF power control, Switch to GND
 #define Red_LED 13
 #define Green_LED 12
 #define Red_LED_ON  PORTB |= _BV(5);

@@ -41,6 +41,7 @@ void setup()
 	pinMode(Green_LED, OUTPUT);
 	pinMode(BUZZER, OUTPUT);
 	pinMode(BTN, INPUT);
+	pinMode(PWR_BTN, INPUT);
 	pinMode(SDO_pin, INPUT);
 	pinMode(SDI_pin, OUTPUT);
 	pinMode(SCLK_pin, OUTPUT);
@@ -113,6 +114,7 @@ void loop()
 	sei();
 	digitalWrite(BUZZER, LOW);
 	digitalWrite(BTN, HIGH);
+	digitalWrite(PWR_BTN, HIGH); // Internal pullup
 	delay(100);
 	Check_Button();
 	digitalWrite(BUZZER, LOW);
