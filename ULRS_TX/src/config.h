@@ -39,9 +39,6 @@ void send_read_address(unsigned char i);
 unsigned char read_8bit_data(void);
 void to_tx_mode(void);
 
-//unsigned long previousMillis = 0;      // will store last time LED was updated
-//const long interval = 1000;           // interval at which to blink (milliseconds)
-
 unsigned long buzpreviousMillis = 0;      // will store last time Buzzer beeped
 const long buzinterval = 1000;           // interval at which to Buzz (milliseconds)
 

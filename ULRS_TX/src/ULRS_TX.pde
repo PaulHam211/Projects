@@ -140,8 +140,6 @@ void loop()
 		{
 			red_led(true);
 
-			LinkInit = true;
-
 			if (debug)
 			{
 				Serial.print(" AFC ");
@@ -170,6 +168,7 @@ void loop()
 
 			Rx_Pack_Received = 0;
 			LostSignal = false; // Reset LostSignal to false (has signal)
+			LinkInit = true;
 
 			red_led(false);
 		}
@@ -280,8 +279,8 @@ void loop()
 				{
 					digitalWrite(BUZZER, HIGH); // Less than Lost_Package_Alert + 50, so Buzzer full on
 				}
-				}
 			}
+		}
 
 			else
 			{
