@@ -125,10 +125,13 @@ void Check_Button(void)
 		digitalWrite(BUZZER, LOW);
 	}
 
+	if (digitalRead(PWR_BTN) == 0)	// If PWR_BTN connected to GND
 	{
+		Power_Set(0);	// Set power to minimum  / off??
 	}
 	else
 	{
+		Power_Set(POWER);	// else if HIGH (internalpullup), set as POWER from config.h
 	}
 }
 
