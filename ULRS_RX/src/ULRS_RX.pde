@@ -88,6 +88,7 @@ unsigned char i, tx_data_length;
 
 void loop()
 {
+	BuzzerHello();
 	receiver_mode = check_modes();
 	load_failsafe_values();
 	Power_Set(POWER);
@@ -327,5 +328,16 @@ void rssi()
 			Serial.print((float) Rx_RSSI / 1.9 - 130.0);
 			Serial.println(" dBm");
 		}
+	}
+}
+
+void BuzzerHello()
+{
+	for (int i = 0; i < 2; i++)
+	{
+		digitalWrite(BUZZER, HIGH);
+		delay(150);
+		digitalWrite(BUZZER, LOW);
+		delay(30);
 	}
 }

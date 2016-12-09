@@ -51,7 +51,7 @@ enum board_type_enum
 	TX_BOARD
 };
 
-board_type_enum rx_board = TX_BOARD; // TX_BOARD and RX_V2 are supported, to compile 
+board_type_enum rx_board = TX_BOARD; // TX_BOARD and RX_V2 are supported, to compile
 
 enum rf_rate_enum
 {
@@ -89,6 +89,7 @@ static unsigned char RF_Header[4] = {'F', 'L', 'I', 'P'};
 #define FLAPS 5
 #define AUX1 6
 #define AUX2 7
+#define BUZZER 10
 
 // not used
 #define DUAL_AILERON_SERVO 4
@@ -113,9 +114,9 @@ int fifo_len = 0;
 
 unsigned char RF_Rx_Buffer[RF_PACK_SIZE];
 unsigned char RF_Tx_Buffer[RF_PACK_SIZE];
-unsigned char RS232_Tx_Buffer[RF_PACK_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};	
-unsigned int Servo_Buffer[RC_CHANNEL_COUNT] = {3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000};	
-unsigned int Servo_Position[RC_CHANNEL_COUNT] = {3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000};	
+unsigned char RS232_Tx_Buffer[RF_PACK_SIZE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+unsigned int Servo_Buffer[RC_CHANNEL_COUNT] = {3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000};
+unsigned int Servo_Position[RC_CHANNEL_COUNT] = {3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000};
 static unsigned char Servo_Number = 0;
 unsigned int total_ppm_time = 0;
 unsigned short Rx_RSSI, vbat = 0;
@@ -178,7 +179,7 @@ unsigned char loop_counter = 0;
 #define Green_LED_ON  PORTB |= _BV(5);
 #define Green_LED_OFF  PORTB &= ~_BV(5);
 
-#define PPM_out 7 
+#define PPM_out 7
 #define Servo_Ports_LOW digitalWrite(PPM_out,LOW);
 
 #define Serial_PPM_OUT_HIGH digitalWrite(PPM_out,HIGH);
@@ -200,22 +201,22 @@ unsigned char loop_counter = 0;
 
 #define IRQ_pin 2
 #define nSel_pin 4
-#define IRQ_interrupt 0  
+#define IRQ_interrupt 0
 
-#define  nIRQ_1 (PIND & 0x04)==0x04 
-#define  nIRQ_0 (PIND & 0x04)==0x00 
+#define  nIRQ_1 (PIND & 0x04)==0x04
+#define  nIRQ_0 (PIND & 0x04)==0x00
 
-#define  nSEL_on PORTD |= (1<<4) 
-#define  nSEL_off PORTD &= 0xEF 
+#define  nSEL_on PORTD |= (1<<4)
+#define  nSEL_off PORTD &= 0xEF
 
-#define  SCK_on PORTD |= 0b10000000 
-#define  SCK_off PORTD &= 0b01111111 
+#define  SCK_on PORTD |= 0b10000000
+#define  SCK_off PORTD &= 0b01111111
 
-#define  SDI_on PORTB |= 0b00000001 
-#define  SDI_off PORTB &= 0b11111110 
+#define  SDI_on PORTB |= 0b00000001
+#define  SDI_off PORTB &= 0b11111110
 
-#define  SDO_1 (PINB & 0b00000010) == 0b00000010 
-#define  SDO_0 (PINB & 0b00000010) == 0b00000000 
+#define  SDO_1 (PINB & 0b00000010) == 0b00000010
+#define  SDO_0 (PINB & 0b00000010) == 0b00000000
 #define GREEN_LED_pin 12
 #define RED_LED_pin 13
 #define Red_LED_ON  digitalWrite(RED_LED_pin, HIGH);
